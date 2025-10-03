@@ -1,6 +1,6 @@
 from abc import abstractmethod
 from io import UnsupportedOperation
-from typing import BinaryIO, List, Optional, Self, Union
+from typing import BinaryIO, List, Optional, Union
 
 
 class EncryptedIO(BinaryIO):
@@ -72,7 +72,7 @@ class EncryptedIO(BinaryIO):
     def writelines(self, lines: List[bytes]) -> None:  # type: ignore
         raise UnsupportedOperation()
 
-    def __enter__(self) -> Self:
+    def __enter__(self) -> "EncryptedIO":
         return self
 
     def __exit__(self, type, value, traceback) -> None:  # type: ignore
